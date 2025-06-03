@@ -9,7 +9,7 @@
 
 # BlockSync: Minecraft Stats SFTP
 
-A Laravel-based tool for ingesting and synchronizing Minecraft player statistics from JSON files, supporting SFTP file transfer and database storage.
+A Laravel-based tool and API for ingesting, synchronizing, and serving Minecraft player statistics from JSON files. BlockSync supports SFTP file transfer, database storage, and provides RESTful API endpoints for querying player stats, categories, and keys.
 
 ## Features
 - Ingests player stats from JSON files stored locally or via SFTP
