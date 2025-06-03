@@ -22,11 +22,11 @@ A Laravel-based tool for ingesting and synchronizing Minecraft player statistics
 
 ## API Routes
 
-| Method | Endpoint                                 | Description                                      |
-|--------|------------------------------------------|--------------------------------------------------|
-| GET    | /api/stats/categories                    | List all stat categories                         |
-| GET    | /api/stats/keys/{category}               | List all stat keys for a given category          |
-| GET    | /api/stats/player/{uuidOrUsername}       | List all stats for a player by UUID or username  |
+| Method | Endpoint                                         | Description                                      |
+|--------|--------------------------------------------------|--------------------------------------------------|
+| GET    | /api/stats/categories                            | List all stat categories                         |
+| GET    | /api/stats/categories/{category}/keys            | List all stat keys for a given category          |
+| GET    | /api/stats/players/{uuidOrUsername}              | List all stats for a player by UUID or username  |
 
 ## Requirements
 - PHP 8.1 or higher (with PDO and SQLite extensions)
