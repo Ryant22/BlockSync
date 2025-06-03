@@ -60,5 +60,60 @@ class StatController extends Controller
         $stats = Stat::where('uuid', $player->uuid)->get();
         return response()->json($stats);
     }
+    /**
+     * Display a listing of stats for a specific player by category.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $uuid|$username
+     * @param  string  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function statsByPlayerAndCategory(Request $request, $uuidOrUsername, $category)
+    {
+        $player = \App\Models\Player::where('uuid', $uuidOrUsername)
+            ->orWhere('username', $uuidOrUsername)
+            ->first();
+
+        if (!$player) {
+            return response()->json(['error' => 'Player not found'], 404);
+        }
+
+        $stats = Stat::where('uuid', $player->uuid)
+            ->where('category', $category)
+            ->get();
+
+        return response()->json($stats);
+    }
+    /**
+     * Display a listing of stats for a specific player by category & key.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $uuid|$username
+     * @param  string  $category
+     * @param  string  $key
+     * @return \Illuminate\Http\Response
+     */
+    public function statsByPlayerAndCategoryAndKey(Request $request, $uuidOrUsername, $category, $key)
+    {
+        $player = \App\Models\Player::where('uuid', $uuidOrUsername)
+            ->orWhere('username', $uuidOrUsername)
+            ->first();
+
+        if (!$player) {
+            return response()->json(['error' => 'Player not found'], 404);
+        }
+
+        $stat = Stat::where('uuid', $player->uuid)
+            ->where('category', $category)
+            ->where('key', $key)
+            ->first();
+
+        if (!$stat) {
+            return response()->json(['error' => 'Stat not found'], 404);
+        }
+
+        return response()->json($stat);
+    }
+    
     
 }
