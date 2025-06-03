@@ -83,6 +83,17 @@ SFTP_ROOT="/path/to/stats"
 SFTP_TIMEOUT=10
 ```
 
+## Automation (Production)
+
+For production environments, consider setting up a cron job or scheduled task to automate the following commands:
+
+```sh
+php artisan sftp:sync
+php artisan mc:ingestStats
+```
+
+This ensures your local stats are always up-to-date with the SFTP source and ingested into the database. Adjust the schedule as needed for your use case (e.g., every 5 minutes, hourly, etc.).
+
 ## Troubleshooting
 - Ensure `pdo_sqlite` and `sqlite3` extensions are enabled in your `php.ini` if using SQLite.
 - Check `storage/logs/laravel.log` for errors.
